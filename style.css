@@ -21,7 +21,7 @@ h1 {
 	display: inline-block;
 	width: 60px;
 	height: 60px;
-	border: 2px solid wheat;
+	border: 2px solid rgb(65, 64, 64);
 	border-radius: 4px;
     margin: 2px;
 	font-size: 2rem;
@@ -29,6 +29,13 @@ h1 {
 	font-weight: bolder;
 	overflow: hidden;
 }
+
+.correct-cell {
+	background-color: rgba(115, 204, 122, 0.596);
+	border: 2px solid rgb(255, 255, 255);
+	color: black;
+}
+
 
 .modal {
     position: fixed;
@@ -76,3 +83,4 @@ h1 {
     transform: scale(1.0);
     transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
 }
+

@@ -42,6 +42,7 @@ const clearBoard = () => {
 	for (let i = 0; i < 6; i++) {
 		for (let j = 0; j < 5; j++) {
 			gridRows[i].children[j].textContent = "";
+			gridRows[i].children[j].classList.remove("correct-cell");
 		}
 	}
 };
@@ -56,18 +57,23 @@ const resetGame = () => {
 	i = 0;
 	j = 0;
 	str = "";
+	toggleModal();
 };
 
 document.addEventListener("keydown", (e) => {
 	if (j === 5 && e.key === "Enter") {
 		if (str === secretWord) {
-			
-			resetGame();
+			modalText.innerText = "Congratulations!! You guessed the correct word.";
+			allCorrect(i);
+			toggleModal();
+			setTimeout(resetGame, 2000);
+			// resetGame();
 		} else {
 			j = 0;
 			i++;
 			str = "";
-			alert("Not the correct word");
+			modalText.innerText = "Not the correct word!!";
+			setTimeout(toggleModal, 1000);
 		}
 	}
 	if (e.keyCode >= 65 && e.keyCode <= 90 && j < 5) {
@@ -76,3 +82,13 @@ document.addEventListener("keydown", (e) => {
 		str += e.key;
 	}
 });
+
+
+
+
+const allCorrect = row => {
+	for (let i = 0; i < 5; i++) {
+		gridRows[row].children[i].classList.add("correct-cell");
+	}
+}
+
