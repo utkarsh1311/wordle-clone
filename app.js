@@ -78,14 +78,11 @@ document.addEventListener("keydown", (e) => {
 		}
 	}
 	if (e.keyCode >= 65 && e.keyCode <= 90 && j < 5) {
-		gridRows[i].children[j].textContent = e.key;
+		gridRows[i].children[j].textContent = e.key.toUpperCase();
 		j++;
 		str += e.key;
 	}
 });
-
-
-
 
 const allCorrect = row => {
 	for (let i = 0; i < 5; i++) {
