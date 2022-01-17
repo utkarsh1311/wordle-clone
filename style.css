@@ -13,9 +13,7 @@ body {
 }
 
 h1 {
-	/* padding: 2rem; */
 	margin: 2rem;
-	background-color: red;
 }
 
 
@@ -24,10 +22,15 @@ h1 {
 	width: 60px;
 	height: 60px;
 	border: 2px solid wheat;
-    margin: 1px;
+	border-radius: 4px;
+    margin: 2px;
+	font-size: 2rem;
+	padding: 10px;
+	font-weight: bolder;
+	overflow: hidden;
 }
 
-
+/* 
 @media only screen and (min-width: 768px) {
     .cell {
         width: 80px;
@@ -44,4 +47,4 @@ h1 {
         height: 100px;
 
     }
-}
+} */
