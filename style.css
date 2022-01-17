@@ -1,0 +1,47 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+    padding: 0.5em;
+	background-color: #111;
+	color: antiquewhite;
+	font-family: sans-serif;
+	text-align: center;
+}
+
+h1 {
+	/* padding: 2rem; */
+	margin: 2rem;
+	background-color: red;
+}
+
+
+.cell {
+	display: inline-block;
+	width: 60px;
+	height: 60px;
+	border: 2px solid wheat;
+    margin: 1px;
+}
+
+
+@media only screen and (min-width: 768px) {
+    .cell {
+        width: 80px;
+        height: 80px;
+        border: 2px solid wheat;
+        margin: 1px;
+    }
+}
+
+
+@media only screen and (min-width: 600px) {
+    .cell {
+        width: 100px;
+        height: 100px;
+
+    }
+}
