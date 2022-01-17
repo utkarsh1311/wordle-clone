@@ -1,3 +1,23 @@
+const modal = document.querySelector(".modal");
+const closeButton = document.querySelector(".close-button");
+
+window.onload = function () {
+	toggleModal();
+};
+
+function toggleModal() {
+	modal.classList.toggle("show-modal");
+}
+
+function windowOnClick(event) {
+	if (event.target === modal) {
+		toggleModal();
+	}
+}
+
+closeButton.addEventListener("click", toggleModal);
+window.addEventListener("click", windowOnClick);
+
 let grid = document.getElementById("word-grid");
 
 for (let i = 0; i < 6; i++) {
@@ -29,6 +49,7 @@ const clearBoard = () => {
 let i = 0;
 let j = 0;
 let str = "";
+let modalText = document.getElementById("modal-h1");
 
 const resetGame = () => {
 	clearBoard();
@@ -40,7 +61,7 @@ const resetGame = () => {
 document.addEventListener("keydown", (e) => {
 	if (j === 5 && e.key === "Enter") {
 		if (str === secretWord) {
-			alert("Congo");
+			
 			resetGame();
 		} else {
 			j = 0;
