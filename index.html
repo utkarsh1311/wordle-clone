@@ -4,13 +4,21 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="modal.css">
         <link rel="stylesheet" href="style.css">
 		<title>Wordle Clone</title>
 	</head>
 	<body>
+		<div class="modal">
+			<div class="modal-content">
+				<span class="close-button">&times;</span>
+				<h1 id="modal-h1">Welcome to the Wordle game</h1>
+			</div>
+		</div>
 		<h1>WORDLE</h1>
         <div id="word-grid">
         </div>
+		<script src="modal.js"></script>
 		<script src="app.js"></script>
 	</body>
 </html>
