@@ -18,19 +18,34 @@ let wordArr = secretWord.split("");
 
 let gridRows = grid.children;
 
+const clearBoard = () => {
+	for (let i = 0; i < 6; i++) {
+		for (let j = 0; j < 5; j++) {
+			gridRows[i].children[j].textContent = "";
+		}
+	}
+};
+
 let i = 0;
 let j = 0;
 let str = "";
 
-document.addEventListener('keydown', e => {
-	if (j === 5 && e.key === 'Enter') {
+const resetGame = () => {
+	clearBoard();
+	i = 0;
+	j = 0;
+	str = "";
+};
+
+document.addEventListener("keydown", (e) => {
+	if (j === 5 && e.key === "Enter") {
 		if (str === secretWord) {
 			alert("Congo");
-			return;
+			resetGame();
 		} else {
 			j = 0;
 			i++;
-			str = '';
+			str = "";
 			alert("Not the correct word");
 		}
 	}
@@ -39,6 +54,4 @@ document.addEventListener('keydown', e => {
 		j++;
 		str += e.key;
 	}
-})
-
-// 
+});
