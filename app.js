@@ -73,6 +73,7 @@ document.addEventListener("keydown", (e) => {
 			i++;
 			str = "";
 			modalText.innerText = "Not the correct word!!";
+			toggleModal();
 			setTimeout(toggleModal, 1000);
 		}
 	}
