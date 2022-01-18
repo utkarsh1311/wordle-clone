@@ -50,7 +50,7 @@ const clearBoard = () => {
 let i = 0;
 let j = 0;
 let str = "";
-let modalText = document.getElementById("modal-h1");
+let modalText = document.querySelector(".modal-text");
 
 const resetGame = () => {
 	clearBoard();
@@ -63,11 +63,10 @@ const resetGame = () => {
 document.addEventListener("keydown", (e) => {
 	if (j === 5 && e.key === "Enter") {
 		if (str === secretWord) {
-			modalText.innerText = "Congratulations!! You guessed the correct word.";
+			modalText.innerHTML = "<h1> Congratulations 🎉🎉🎉 <br>You guesses the correct word. <h1>";
 			allCorrect(i);
 			toggleModal();
-			setTimeout(resetGame, 2000);
-			// resetGame();
+			setTimeout(resetGame, 3000);
 		} else {
 			j = 0;
 			i++;
