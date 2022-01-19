@@ -93,7 +93,7 @@ document.addEventListener("keydown", (e) => {
 	if (e.keyCode >= 65 && e.keyCode <= 90 && col < 5) {
 		gridRows[row].children[col].textContent = e.key.toUpperCase();
 		col++;
-		str += e.key;
+		str += e.key.toLowerCase();
 	}
 });
 
