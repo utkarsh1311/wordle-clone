@@ -61,9 +61,16 @@ const resetGame = () => {
 };
 
 document.addEventListener("keydown", (e) => {
+	if (e.key === "Backspace" && j >= 1) {
+		j--;
+		gridRows[i].children[j].textContent = "";
+		str = str.substring(0, str.length - 1);
+	}
+
 	if (j === 5 && e.key === "Enter") {
 		if (str === secretWord) {
-			modalText.innerHTML = "<h1> Congratulations 🎉🎉🎉 <br>You guesses the correct word. <h1>";
+			modalText.innerHTML =
+				"<h1> Congratulations 🎉🎉🎉 <br>You guesses the correct word. <h1>";
 			allCorrect(i);
 			toggleModal();
 			setTimeout(resetGame, 3000);
@@ -83,9 +90,8 @@ document.addEventListener("keydown", (e) => {
 	}
 });
 
-const allCorrect = row => {
+const allCorrect = (row) => {
 	for (let i = 0; i < 5; i++) {
 		gridRows[row].children[i].classList.add("correct-cell");
 	}
-}
-
+};
