@@ -42,8 +42,11 @@ const clearBoard = () => {
 	for (let i = 0; i < 6; i++) {
 		for (let j = 0; j < 5; j++) {
 			gridRows[i].children[j].textContent = "";
-			gridRows[i].children[j].classList.remove("correct-cell");
-			gridRows[i].children[j].classList.remove("correct-letter-wrong-cell");
+			gridRows[i].children[j].classList.remove(
+				"correct-cell",
+				"correct-letter-wrong-cell",
+				"wrong-cell"
+			);
 		}
 	}
 };
@@ -74,6 +77,7 @@ document.addEventListener("keydown", (e) => {
 				"<h1> Congratulations 🎉🎉🎉 <br>You guesses the correct word. <h1>";
 			allCorrect(row);
 			toggleModal();
+			// setTimeout(toggleModal, 3000);
 			setTimeout(resetGame, 3000);
 		} else {
 			let wrongArr = str.split("");
@@ -100,25 +104,31 @@ const allCorrect = (row) => {
 };
 
 const wrongWordColor = (arr, row) => {
+	let cells = gridRows[row].children;
 	for (let i = 0; i < 5; i++) {
 		if (wordArr[i] === arr[i]) {
-			gridRows[row].children[i].classList.add("correct-cell");
+			cells[i].classList.add("correct-cell");
 		}
 	}
 
 	for (let i = 0; i < 5; i++) {
 		for (let j = 0; j < 5; j++) {
 			if (wordArr[i] === arr[j]) {
-				if (
-					!gridRows[row].children[j].classList.contains(
-						"correct-cell"
-					)
-				) {
-					gridRows[row].children[j].classList.add(
-						"correct-letter-wrong-cell"
-					);
+				if (!cells[j].classList.contains("correct-cell")) {
+					cells[j].classList.add("correct-letter-wrong-cell");
 				}
 			}
+		}
+	}
+
+	for (let i = 0; i < 5; i++) {
+		if (
+			!(
+				cells[i].classList.contains("correct-cell") ||
+				cells[i].classList.contains("correct-letter-wrong-cell")
+			)
+		) {
+			cells[i].classList.add("wrong-cell");
 		}
 	}
 };
