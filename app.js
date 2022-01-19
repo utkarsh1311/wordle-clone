@@ -85,9 +85,6 @@ document.addEventListener("keydown", (e) => {
 			col = 0;
 			row++;
 			str = "";
-			modalText.innerHTML = "<h2>Not the correct word<br>🙁🙁🙁🙁</h2>";
-			toggleModal();
-			setTimeout(toggleModal, 1000);
 		}
 	}
 	if (e.keyCode >= 65 && e.keyCode <= 90 && col < 5) {
