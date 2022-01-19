@@ -43,49 +43,52 @@ const clearBoard = () => {
 		for (let j = 0; j < 5; j++) {
 			gridRows[i].children[j].textContent = "";
 			gridRows[i].children[j].classList.remove("correct-cell");
+			gridRows[i].children[j].classList.remove("correct-letter-wrong-cell");
 		}
 	}
 };
 
-let i = 0;
-let j = 0;
+let row = 0;
+let col = 0;
 let str = "";
 let modalText = document.querySelector(".modal-text");
 
 const resetGame = () => {
 	clearBoard();
-	i = 0;
-	j = 0;
+	row = 0;
+	col = 0;
 	str = "";
 	toggleModal();
 };
 
 document.addEventListener("keydown", (e) => {
-	if (e.key === "Backspace" && j >= 1) {
-		j--;
-		gridRows[i].children[j].textContent = "";
+	if (e.key === "Backspace" && col >= 1) {
+		col--;
+		gridRows[row].children[col].textContent = "";
 		str = str.substring(0, str.length - 1);
 	}
 
-	if (j === 5 && e.key === "Enter") {
+	if (col === 5 && e.key === "Enter") {
 		if (str === secretWord) {
 			modalText.innerHTML =
 				"<h1> Congratulations 🎉🎉🎉 <br>You guesses the correct word. <h1>";
-			allCorrect(i);
+			allCorrect(row);
 			toggleModal();
 			setTimeout(resetGame, 3000);
 		} else {
-			j = 0;
-			i++;
+			let wrongArr = str.split("");
+			wrongWordColor(wrongArr, row);
+			col = 0;
+			row++;
 			str = "";
 			modalText.innerText = "Not the correct word!!";
 			toggleModal();
 			setTimeout(toggleModal, 1000);
 		}
 	}
-	if (e.keyCode >= 65 && e.keyCode <= 90 && j < 5) {
-		gridRows[i].children[j].textContent = e.key.toUpperCase();
-		j++;
+	if (e.keyCode >= 65 && e.keyCode <= 90 && col < 5) {
+		gridRows[row].children[col].textContent = e.key.toUpperCase();
+		col++;
 		str += e.key;
 	}
 });
@@ -93,5 +96,29 @@ document.addEventListener("keydown", (e) => {
 const allCorrect = (row) => {
 	for (let i = 0; i < 5; i++) {
 		gridRows[row].children[i].classList.add("correct-cell");
+	}
+};
+
+const wrongWordColor = (arr, row) => {
+	for (let i = 0; i < 5; i++) {
+		if (wordArr[i] === arr[i]) {
+			gridRows[row].children[i].classList.add("correct-cell");
+		}
+	}
+
+	for (let i = 0; i < 5; i++) {
+		for (let j = 0; j < 5; j++) {
+			if (wordArr[i] === arr[j]) {
+				if (
+					!gridRows[row].children[j].classList.contains(
+						"correct-cell"
+					)
+				) {
+					gridRows[row].children[j].classList.add(
+						"correct-letter-wrong-cell"
+					);
+				}
+			}
+		}
 	}
 };
