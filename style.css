@@ -35,15 +35,18 @@ body {
 .correct-cell {
 	background-color: rgba(94, 233, 106, 0.596);
 	border: 0px;
+	transition: all linear 800ms;
 }
 .correct-letter-wrong-cell {
 	background-color: rgba(219, 219, 76, 0.596);
 	border: 0;
+	transition: all linear 800ms;
 }
 
 .wrong-cell {
 	background-color: rgb(73, 73, 73);
 	border: 0;
+	transition: all linear 800ms;
 }
 
 .modal {
@@ -91,16 +94,13 @@ li {
 
 .close-button {
 	float: right;
-	width: 1.5rem;
-	line-height: 1.5rem;
+	width: 3rem;
+	font-weight: bolder;
+	line-height: 3rem;
 	text-align: center;
 	cursor: pointer;
 	border-radius: 0.25rem;
-	background-color: rgb(97, 97, 97);
-}
-
-.close-button:hover {
-	background-color: darkgray;
+	background-color: rgba(97, 97, 97, 0);
 }
 
 .show-modal {
@@ -108,4 +108,10 @@ li {
 	visibility: visible;
 	transform: scale(1);
 	transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+
+@media only screen and (min-width: 768px) {
+	.modal-content {
+		width: 30rem;
+	}
 }
