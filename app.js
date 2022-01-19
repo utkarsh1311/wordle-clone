@@ -85,7 +85,7 @@ document.addEventListener("keydown", (e) => {
 			col = 0;
 			row++;
 			str = "";
-			modalText.innerText = "Not the correct word!!";
+			modalText.innerHTML = "<h2>Not the correct word<br>🙁🙁🙁🙁</h2>";
 			toggleModal();
 			setTimeout(toggleModal, 1000);
 		}
