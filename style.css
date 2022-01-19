@@ -17,9 +17,9 @@ body {
 }
 
 .cell {
-	box-shadow: 6px 7px 16px 1px rgba(0,0,0,0.56);
--webkit-box-shadow: 6px 7px 16px 1px rgba(0,0,0,0.56);
--moz-box-shadow: 6px 7px 16px 1px rgba(0,0,0,0.56);
+	box-shadow: 6px 7px 16px 1px rgba(0, 0, 0, 0.56);
+	-webkit-box-shadow: 6px 7px 16px 1px rgba(0, 0, 0, 0.56);
+	-moz-box-shadow: 6px 7px 16px 1px rgba(0, 0, 0, 0.56);
 	display: inline-block;
 	width: 70px;
 	height: 70px;
@@ -98,7 +98,7 @@ li {
 }
 
 .close-button {
-	position:absolute;
+	position: absolute;
 	right: 10px;
 	top: 10px;
 	float: right;
