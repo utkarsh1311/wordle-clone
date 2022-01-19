@@ -30,7 +30,7 @@ body {
 }
 
 #modal-h1 {
-    margin: 1.5rem;
+	margin: 1.5rem;
 }
 .correct-cell {
 	background-color: rgba(94, 233, 106, 0.596);
@@ -108,10 +108,4 @@ li {
 	visibility: visible;
 	transform: scale(1);
 	transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
-}
-
-@media only screen and (min-width: 768px) {
-	.modal-content {
-		width: 30rem;
-	}
 }
