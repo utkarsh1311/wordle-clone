@@ -55,6 +55,7 @@ let row = 0;
 let col = 0;
 let str = "";
 let modalText = document.querySelector(".modal-text");
+let modalContent = document.querySelector(".modal-content");
 
 const resetGame = () => {
 	clearBoard();
@@ -91,6 +92,13 @@ document.addEventListener("keydown", (e) => {
 		gridRows[row].children[col].textContent = e.key.toUpperCase();
 		col++;
 		str += e.key.toLowerCase();
+	}
+	
+	if (row === 6) {
+		modalContent.innerHTML =
+			'<img class="game-over" src="./game-over-removebg-preview.png">';
+		toggleModal();
+		setTimeout(resetGame, 3000);
 	}
 });
 

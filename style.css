@@ -77,12 +77,14 @@ body {
 	left: 50%;
 	transform: translate(-50%, -50%);
 	/* background-color: rgb(97, 97, 97); */
-	padding: 2rem 3rem;
+	padding: 2rem 2rem;
 	width: 30rem;
 	/* border-radius: 0.5rem; */
 }
 
 .modal-text {
+	display: flex;
+	flex-direction: column;
 	padding: 0.5rem;
 	text-align: center;
 }
@@ -96,6 +98,9 @@ li {
 }
 
 .close-button {
+	position:absolute;
+	right: 10px;
+	top: 10px;
 	float: right;
 	width: 3rem;
 	font-weight: bolder;
