@@ -33,14 +33,17 @@ body {
     margin: 1.5rem;
 }
 .correct-cell {
-	background-color: rgba(115, 204, 122, 0.596);
-	/* border: 2px solid rgb(255, 255, 255); */
-	color: black;
+	background-color: rgba(94, 233, 106, 0.596);
+	border: 0px;
 }
 .correct-letter-wrong-cell {
-	background-color: rgb(255, 255, 0);
-	/* border: 2px solid rgb(255, 255, 255); */
-	color: black;
+	background-color: rgba(219, 219, 76, 0.596);
+	border: 0;
+}
+
+.wrong-cell {
+	background-color: rgb(73, 73, 73);
+	border: 0;
 }
 
 .modal {
