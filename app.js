@@ -25,6 +25,7 @@ fetch("./words.json")
 	.then((data) => {
 		let arr = data.words;
 		let secretWord = arr[Math.floor(Math.random() * arr.length)];
+		console.log(secretWord);
 		let grid = document.getElementById("word-grid");
 
 		for (let i = 0; i < 6; i++) {
