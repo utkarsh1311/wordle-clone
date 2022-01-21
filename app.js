@@ -49,9 +49,7 @@ fetch("./words.json")
 
 			grid.appendChild(row);
 		}
-		document.addEventListener("keydown", (e) => {
-			console.log(e);
-		});
+		
 		const clearBoard = () => {
 			for (let i = 0; i < 6; i++) {
 				for (let j = 0; j < 5; j++) {
