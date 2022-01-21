@@ -72,7 +72,7 @@ fetch("./words.json")
 		};
 
 		const gameLogic = (e, val) => {
-			if (e[val] === "Backspace" && col >= 1) {
+			if (e[val] === "Backspace" || e[val] === "<-" && col >= 1) {
 				col--;
 				gridRows[row].children[col].textContent = "";
 				str = str.substring(0, str.length - 1);
@@ -101,7 +101,7 @@ fetch("./words.json")
 
 			if (row === 6) {
 				modalContent.innerHTML =
-					'<img class="game-over" src="./game-over-removebg-preview.png">';
+					'<img class="game-over" src="/img/game-over-removebg-preview.png">';
 				toggleModal();
 				setTimeout(resetGame, 3000);
 			}
