@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@700&family=Rubik:wght@300&display=swap");
+
 * {
 	margin: 0;
 	padding: 0;
@@ -5,6 +7,8 @@
 }
 
 body {
+	font-family: "Red Hat Display", sans-serif;
+	font-family: "Rubik", sans-serif;
 	padding: 0.5em;
 	background-color: #111;
 	color: antiquewhite;
@@ -13,7 +17,7 @@ body {
 }
 
 #main-heading {
-	margin: 2rem;
+	margin: 1rem;
 }
 
 .cell {
@@ -21,13 +25,13 @@ body {
 	-webkit-box-shadow: 6px 7px 16px 1px rgba(0, 0, 0, 0.56);
 	-moz-box-shadow: 6px 7px 16px 1px rgba(0, 0, 0, 0.56);
 	display: inline-block;
-	width: 70px;
-	height: 70px;
+	width: 50px;
+	height: 50px;
 	border: 2px solid rgb(65, 64, 64);
 	border-radius: 4px;
 	margin: 2px;
-	font-size: 2.5rem;
-	padding: 14px;
+	font-size: 1.5rem;
+	padding: 10px;
 	font-weight: bolder;
 	overflow: hidden;
 }
@@ -116,4 +120,28 @@ li {
 	visibility: visible;
 	transform: scale(1);
 	transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+
+#keyboard {
+	margin: 0.2rem;
+}
+
+#keyboard input {
+	box-shadow: 6px 7px 16px 1px rgba(0, 0, 0, 0.56);
+	width: 2.8rem;
+	height: 3.7rem;
+	margin: 0.2rem;
+	border-radius: 5px;
+	border: 0;
+	font-size: large;
+	font-weight: bold;
+	background-color: #818384;
+	color: white;
+}
+
+.keyboard-row {
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
