@@ -23,10 +23,20 @@ fetch("./words.json")
 		return response.json();
 	})
 	.then((data) => {
-		let arr = data.words;
-		let secretWord = arr[Math.floor(Math.random() * arr.length)];
-		console.log(secretWord);
-		let grid = document.getElementById("word-grid");
+		const arr = data.words;
+		const secretWord = arr[Math.floor(Math.random() * arr.length)];
+		const grid = document.getElementById("word-grid");
+		const wordArr = secretWord.split("");
+		const gridRows = grid.children;
+		const keys = document
+			.querySelector("#keyboard")
+			.getElementsByTagName("input");
+
+		let row = 0;
+		let col = 0;
+		let str = "";
+		let modalText = document.querySelector(".modal-text");
+		let modalContent = document.querySelector(".modal-content");
 
 		for (let i = 0; i < 6; i++) {
 			let row = document.createElement("div");
@@ -39,10 +49,9 @@ fetch("./words.json")
 
 			grid.appendChild(row);
 		}
-		let wordArr = secretWord.split("");
-
-		let gridRows = grid.children;
-
+		document.addEventListener("keydown", (e) => {
+			console.log(e);
+		});
 		const clearBoard = () => {
 			for (let i = 0; i < 6; i++) {
 				for (let j = 0; j < 5; j++) {
@@ -56,12 +65,6 @@ fetch("./words.json")
 			}
 		};
 
-		let row = 0;
-		let col = 0;
-		let str = "";
-		let modalText = document.querySelector(".modal-text");
-		let modalContent = document.querySelector(".modal-content");
-
 		const resetGame = () => {
 			clearBoard();
 			row = 0;
@@ -70,20 +73,19 @@ fetch("./words.json")
 			toggleModal();
 		};
 
-		document.addEventListener("keydown", (e) => {
-			if (e.key === "Backspace" && col >= 1) {
+		const gameLogic = (e, val) => {
+			if (e[val] === "Backspace" && col >= 1) {
 				col--;
 				gridRows[row].children[col].textContent = "";
 				str = str.substring(0, str.length - 1);
 			}
 
-			if (col === 5 && e.key === "Enter") {
+			if ((col === 5 && e[val] === "Enter") || e[val] === "enter") {
 				if (str === secretWord) {
 					modalText.innerHTML =
 						"<h1> Congratulations 🎉🎉🎉 <br>You guesses the correct word. <h1>";
 					allCorrect(row);
 					toggleModal();
-					// setTimeout(toggleModal, 3000);
 					setTimeout(resetGame, 3000);
 				} else {
 					let wrongArr = str.split("");
@@ -93,10 +95,10 @@ fetch("./words.json")
 					str = "";
 				}
 			}
-			if (e.keyCode >= 65 && e.keyCode <= 90 && col < 5) {
-				gridRows[row].children[col].textContent = e.key.toUpperCase();
+			if (isCharacterALetter(e[val]) && e[val].length === 1 && col < 5) {
+				gridRows[row].children[col].textContent = e[val].toUpperCase();
 				col++;
-				str += e.key.toLowerCase();
+				str += e[val].toLowerCase();
 			}
 
 			if (row === 6) {
@@ -105,6 +107,17 @@ fetch("./words.json")
 				toggleModal();
 				setTimeout(resetGame, 3000);
 			}
+		};
+
+		for (let key of keys) {
+			key.addEventListener("click", () => {
+				gameLogic(key, "value");
+				key.blur();
+			});
+		}
+
+		document.addEventListener("keydown", (e) => {
+			gameLogic(e, "key");
 		});
 
 		const allCorrect = (row) => {
@@ -141,6 +154,10 @@ fetch("./words.json")
 					cells[i].classList.add("wrong-cell");
 				}
 			}
+		};
+
+		const isCharacterALetter = (char) => {
+			return /[a-zA-Z]/.test(char);
 		};
 	})
 	.catch((err) => {
