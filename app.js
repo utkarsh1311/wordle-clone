@@ -25,6 +25,7 @@ fetch("./words.json")
 	.then((data) => {
 		const arr = data.words;
 		const secretWord = arr[Math.floor(Math.random() * arr.length)];
+		console.log(secretWord);
 		const grid = document.getElementById("word-grid");
 		const wordArr = secretWord.split("");
 		const gridRows = grid.children;
@@ -49,7 +50,7 @@ fetch("./words.json")
 
 			grid.appendChild(row);
 		}
-		
+
 		const clearBoard = () => {
 			for (let i = 0; i < 6; i++) {
 				for (let j = 0; j < 5; j++) {
@@ -72,7 +73,7 @@ fetch("./words.json")
 		};
 
 		const gameLogic = (e, val) => {
-			if (e[val] === "Backspace" || e[val] === "<-" && col >= 1) {
+			if (e[val] === "Backspace" || (e[val] === "<-" && col >= 1)) {
 				col--;
 				gridRows[row].children[col].textContent = "";
 				str = str.substring(0, str.length - 1);
@@ -87,7 +88,7 @@ fetch("./words.json")
 					setTimeout(resetGame, 3000);
 				} else {
 					let wrongArr = str.split("");
-					wrongWordColor(wrongArr, row);
+					colorLetterCells(wrongArr, row);
 					col = 0;
 					row++;
 					str = "";
@@ -124,11 +125,13 @@ fetch("./words.json")
 			}
 		};
 
-		const wrongWordColor = (arr, row) => {
+		const colorLetterCells = (arr, row) => {
 			let cells = gridRows[row].children;
 			for (let i = 0; i < 5; i++) {
 				if (wordArr[i] === arr[i]) {
 					cells[i].classList.add("correct-cell");
+					colorKey(wordArr[i].toUpperCase(), "green");
+
 				}
 			}
 
@@ -137,6 +140,7 @@ fetch("./words.json")
 					if (wordArr[i] === arr[j]) {
 						if (!cells[j].classList.contains("correct-cell")) {
 							cells[j].classList.add("correct-letter-wrong-cell");
+							colorKey(wordArr[i].toUpperCase(), "yellow");
 						}
 					}
 				}
@@ -150,12 +154,27 @@ fetch("./words.json")
 					)
 				) {
 					cells[i].classList.add("wrong-cell");
+					colorKey(cells[i].textContent, "gray");
 				}
 			}
 		};
 
 		const isCharacterALetter = (char) => {
 			return /[a-zA-Z]/.test(char);
+		};
+
+		const colorKey = (key, color) => {
+			for (let k of keys) {
+				if (k.id === key) {
+					if (color === "green") {
+						k.style.backgroundColor = "rgba(94, 233, 106, 0.596)";
+					} else if (color === "yellow") {
+						k.style.backgroundColor = "rgba(219, 219, 76, 0.596)";
+					} else if (color === "gray") {
+						k.style.backgroundColor = "#111";
+					}
+				}
+			}
 		};
 	})
 	.catch((err) => {
