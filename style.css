@@ -28,12 +28,15 @@ body {
 	width: 50px;
 	height: 50px;
 	border: 2px solid rgb(65, 64, 64);
-	border-radius: 4px;
 	margin: 2px;
 	font-size: 1.5rem;
 	padding: 10px;
 	font-weight: bolder;
 	overflow: hidden;
+}
+
+.big-cell {
+	transform: scale(1.08);
 }
 
 #modal-h1 {
@@ -145,3 +148,8 @@ li {
 	align-items: center;
 }
 
+@media only screen and (max-width: 480px) {
+	.modal-content {
+		width: 20rem;
+	}
+}
