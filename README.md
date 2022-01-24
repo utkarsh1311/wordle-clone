@@ -1,2 +1,2 @@
 # wordle-clone
-My version of the wordle game.
+My version of the Wordle game.
