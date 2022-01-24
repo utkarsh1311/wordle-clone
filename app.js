@@ -103,7 +103,7 @@ fetch("./words.json")
 
 			if (row === 6) {
 				modalContent.innerHTML =
-					'<img class="game-over" src="/img/game-over-removebg-preview.png">';
+					'<img class="game-over" src="img/game-over-removebg-preview.png">';
 				toggleModal();
 				setTimeout(resetGame, 3000);
 			}
