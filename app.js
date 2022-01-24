@@ -76,6 +76,7 @@ fetch("./words.json")
 			if (e[val] === "Backspace" || (e[val] === "<-" && col >= 1)) {
 				col--;
 				gridRows[row].children[col].textContent = "";
+				fillCell(gridRows[row].children[col]);
 				str = str.substring(0, str.length - 1);
 			}
 
@@ -97,6 +98,7 @@ fetch("./words.json")
 
 			if (isCharacterALetter(e[val]) && e[val].length === 1 && col < 5) {
 				gridRows[row].children[col].textContent = e[val].toUpperCase();
+				fillCell(gridRows[row].children[col]);
 				col++;
 				str += e[val].toLowerCase();
 			}
@@ -180,6 +182,13 @@ fetch("./words.json")
 				}
 			}
 		};
+
+		const fillCell = cell => {
+			cell.classList.add("big-cell");
+			setTimeout(() => {
+				cell.classList.remove("big-cell");
+			}, 200);
+		}
 	})
 	.catch((err) => {
 		console.log("Error in fetching word");
