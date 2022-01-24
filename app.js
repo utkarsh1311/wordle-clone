@@ -94,6 +94,7 @@ fetch("./words.json")
 					str = "";
 				}
 			}
+
 			if (isCharacterALetter(e[val]) && e[val].length === 1 && col < 5) {
 				gridRows[row].children[col].textContent = e[val].toUpperCase();
 				col++;
@@ -131,7 +132,6 @@ fetch("./words.json")
 				if (wordArr[i] === arr[i]) {
 					cells[i].classList.add("correct-cell");
 					colorKey(wordArr[i].toUpperCase(), "green");
-
 				}
 			}
 
@@ -167,8 +167,12 @@ fetch("./words.json")
 			for (let k of keys) {
 				if (k.id === key) {
 					if (color === "green") {
+						k.classList.add("correct-key");
 						k.style.backgroundColor = "rgba(94, 233, 106, 0.596)";
-					} else if (color === "yellow") {
+					} else if (
+						color === "yellow" &&
+						k.className != "correct-key"
+					) {
 						k.style.backgroundColor = "rgba(219, 219, 76, 0.596)";
 					} else if (color === "gray") {
 						k.style.backgroundColor = "#111";
