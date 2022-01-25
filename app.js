@@ -82,7 +82,6 @@ fetch("./words.json")
 					`;
 					allCorrect(row);
 					toggleModal();
-					setTimeout(resetGame, 3000);
 				} else {
 					let wrongArr = str.split("");
 					colorLetterCells(wrongArr, row);
@@ -106,7 +105,6 @@ fetch("./words.json")
 						<button onclick="window.close()" id="exit">Exit</button>
 					</div>`;
 				toggleModal();
-				setTimeout(resetGame, 3000);
 			}
 		};
 
