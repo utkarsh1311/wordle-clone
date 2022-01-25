@@ -151,7 +151,7 @@ li {
 .play-buttons {
 	margin-top: 2rem;
 	display: flex;
-	flex-direction: column;
+	/* flex-direction: column; */
 	justify-content: center;
 	align-items: center;
 }
@@ -175,5 +175,9 @@ li {
 @media only screen and (max-width: 480px) {
 	.modal-content {
 		width: 20rem;
+	}
+
+	.play-buttons {
+		flex-direction: column;
 	}
 }
