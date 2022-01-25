@@ -63,11 +63,6 @@ fetch("./words.json")
 			}
 		};
 
-		const resetGame = () => {
-			// location.reload();
-			// toggleModal();
-		};
-
 		const gameLogic = (e, val) => {
 			if (e[val] === "Backspace" || (e[val] === "<-" && col >= 1)) {
 				col--;
@@ -79,7 +74,7 @@ fetch("./words.json")
 			if ((col === 5 && e[val] === "Enter") || e[val] === "enter") {
 				if (str === secretWord) {
 					modalText.innerHTML = `
-					<h1> Congratulations 🎉🎉🎉 <br>You guesses the correct word. <h1>
+					<h1> Congratulations 🎉🎉🎉 <br>You guessed the correct word. <h1>
 						<div class="play-buttons">
 						<button onclick="location.reload()" id="play">Play Again</button>
 						<button onclick="window.close()" id="exit">Exit</button>
