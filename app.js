@@ -25,7 +25,6 @@ fetch("./words.json")
 	.then((data) => {
 		const arr = data.words;
 		const secretWord = arr[Math.floor(Math.random() * arr.length)];
-		console.log(secretWord);
 		const grid = document.getElementById("word-grid");
 		const wordArr = secretWord.split("");
 		const gridRows = grid.children;
@@ -65,11 +64,8 @@ fetch("./words.json")
 		};
 
 		const resetGame = () => {
-			clearBoard();
-			row = 0;
-			col = 0;
-			str = "";
-			toggleModal();
+			// location.reload();
+			// toggleModal();
 		};
 
 		const gameLogic = (e, val) => {
@@ -82,8 +78,13 @@ fetch("./words.json")
 
 			if ((col === 5 && e[val] === "Enter") || e[val] === "enter") {
 				if (str === secretWord) {
-					modalText.innerHTML =
-						"<h1> Congratulations 🎉🎉🎉 <br>You guesses the correct word. <h1>";
+					modalText.innerHTML = `
+					<h1> Congratulations 🎉🎉🎉 <br>You guesses the correct word. <h1>
+						<div class="play-buttons">
+						<button onclick="location.reload()" id="play">Play Again</button>
+						<button onclick="window.close()" id="exit">Exit</button>
+					</div>
+					`;
 					allCorrect(row);
 					toggleModal();
 					setTimeout(resetGame, 3000);
@@ -104,8 +105,11 @@ fetch("./words.json")
 			}
 
 			if (row === 6) {
-				modalContent.innerHTML =
-					'<img class="game-over" src="https://github.com/utkarsh1311/wordle-clone/blob/main/img/game-over-removebg-preview.png?raw=true">';
+				modalContent.innerHTML = `<img class="game-over" src="https://github.com/utkarsh1311/wordle-clone/blob/main/img/game-over-removebg-preview.png?raw=true">
+					<div class="play-buttons">
+						<button onclick="location.reload()" id="play">Play Again</button>
+						<button onclick="window.close()" id="exit">Exit</button>
+					</div>`;
 				toggleModal();
 				setTimeout(resetGame, 3000);
 			}
@@ -183,12 +187,12 @@ fetch("./words.json")
 			}
 		};
 
-		const fillCell = cell => {
+		const fillCell = (cell) => {
 			cell.classList.add("big-cell");
 			setTimeout(() => {
 				cell.classList.remove("big-cell");
 			}, 200);
-		}
+		};
 	})
 	.catch((err) => {
 		console.log("Error in fetching word");
