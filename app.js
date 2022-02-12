@@ -64,7 +64,7 @@ fetch("./words.json")
 		};
 
 		const gameLogic = (e, val) => {
-			if (e[val] === "Backspace" || (e[val] === "<-" && col >= 1)) {
+			if ( (e[val] === "Backspace" || e[val] === "<-") && col >= 1) {
 				col--;
 				gridRows[row].children[col].textContent = "";
 				fillCell(gridRows[row].children[col]);
